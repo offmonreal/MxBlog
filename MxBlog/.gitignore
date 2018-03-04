@@ -1,0 +1,10 @@
+*.DS_Store
+
+# NetBeans
+nbproject/private/ 
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+core
