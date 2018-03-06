@@ -7,7 +7,7 @@
 #include "MxSql.h"
 
 using namespace XW;
-using namespace MxSql;
+using namespace MxSQL;
 
 class StartPG : public XWPage, public XWConstructor
 {

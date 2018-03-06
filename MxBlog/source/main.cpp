@@ -1,12 +1,12 @@
 #include "includes.h"
+#include "static_resource.h"
 #include "StartPG.h"
 #include "InstallPG.h"
-#include "static_resource.h"
 #include "XW.h"
 #include "MxSql.h"
 
 using namespace XW;
-using namespace MxSql;
+using namespace MxSQL;
 
 //Если база существует и работает
 bool test_data_base()
@@ -63,10 +63,10 @@ int main(int argc, char** argv)
 
     // ============ SETTING SITE ============
     //Name domain
-    xw->addSite("tnx.pw", dir);
-    xw->addSite("tnx.pw:80", dir);
-    xw->addSite("www.tnx.pw", dir);
-    xw->addSite("www.tnx.pw:80", dir);
+    //xw->addSite("tnx.pw", dir);
+    //xw->addSite("tnx.pw:80", dir);
+    //xw->addSite("www.tnx.pw", dir);
+    //xw->addSite("www.tnx.pw:80", dir);
 
     //Local test VIRTUAL NAME in /etc/hosts
     xw->addSite("tnx.pp", dir);
