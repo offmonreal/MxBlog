@@ -2,16 +2,16 @@
 
 db_Catigories::db_Catigories(PGconn * pConnect)
 {
-    Table::setName("catigories_test");
+    Table::setName("catigories");
 
     //First key
-    FProperties * fk = new FProperties("key_catigories", MxSQL::SERIAL8);
+    FProperties * fk = new FProperties("key_catigories", TF::SERIAL4);
     fk->PrimaryKey = true;
     Table::addProperties(fk);
     //
-    Table::addProperties(new FProperties("name", MxSQL::VarChar, 255, true, true));
-    Table::addProperties(new FProperties("children", MxSQL::Int4, 0, true, false, "0"));
-    Table::addProperties(new FProperties("seo_url", MxSQL::VarChar, 255));
+    Table::addProperties(new FProperties("name", TF::VarChar, 255, true, MxSQL::UI::LOWER));
+    Table::addProperties(new FProperties("children", TF::Int4, 0, true, MxSQL::UI::FALSE, "0"));
+    Table::addProperties(new FProperties("seo_url", TF::VarChar, 255));
 
 
     IConnect::setConnection(pConnect);
