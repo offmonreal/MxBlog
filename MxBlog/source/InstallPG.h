@@ -5,10 +5,10 @@
 
 //XWeb
 #include "XW.h"
+
 //Table MxSQL
-#include "db_Query.h"
-#include "db_Catigories.h"
-#include "db_Log.h"
+#include "db_XQuery.h"
+
 
 using namespace XW;
 using namespace MxSQL;

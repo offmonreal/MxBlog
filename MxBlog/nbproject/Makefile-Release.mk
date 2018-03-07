@@ -38,7 +38,13 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/InstallPG.o \
 	${OBJECTDIR}/source/StartPG.o \
 	${OBJECTDIR}/source/db_Catigories.o \
+	${OBJECTDIR}/source/db_Comments.o \
 	${OBJECTDIR}/source/db_Log.o \
+	${OBJECTDIR}/source/db_Posts.o \
+	${OBJECTDIR}/source/db_Session.o \
+	${OBJECTDIR}/source/db_Tags.o \
+	${OBJECTDIR}/source/db_UserAccess.o \
+	${OBJECTDIR}/source/db_Users.o \
 	${OBJECTDIR}/source/main.o
 
 
@@ -85,10 +91,40 @@ ${OBJECTDIR}/source/db_Catigories.o: source/db_Catigories.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I/usr/include/postgresql -I../../mxchat/XWeb/source -I../../mxsql/PG/MxSql/source -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/db_Catigories.o source/db_Catigories.cpp
 
+${OBJECTDIR}/source/db_Comments.o: source/db_Comments.cpp
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I/usr/include/postgresql -I../../mxchat/XWeb/source -I../../mxsql/PG/MxSql/source -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/db_Comments.o source/db_Comments.cpp
+
 ${OBJECTDIR}/source/db_Log.o: source/db_Log.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I/usr/include/postgresql -I../../mxchat/XWeb/source -I../../mxsql/PG/MxSql/source -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/db_Log.o source/db_Log.cpp
+
+${OBJECTDIR}/source/db_Posts.o: source/db_Posts.cpp
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I/usr/include/postgresql -I../../mxchat/XWeb/source -I../../mxsql/PG/MxSql/source -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/db_Posts.o source/db_Posts.cpp
+
+${OBJECTDIR}/source/db_Session.o: source/db_Session.cpp
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I/usr/include/postgresql -I../../mxchat/XWeb/source -I../../mxsql/PG/MxSql/source -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/db_Session.o source/db_Session.cpp
+
+${OBJECTDIR}/source/db_Tags.o: source/db_Tags.cpp
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I/usr/include/postgresql -I../../mxchat/XWeb/source -I../../mxsql/PG/MxSql/source -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/db_Tags.o source/db_Tags.cpp
+
+${OBJECTDIR}/source/db_UserAccess.o: source/db_UserAccess.cpp
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I/usr/include/postgresql -I../../mxchat/XWeb/source -I../../mxsql/PG/MxSql/source -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/db_UserAccess.o source/db_UserAccess.cpp
+
+${OBJECTDIR}/source/db_Users.o: source/db_Users.cpp
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I/usr/include/postgresql -I../../mxchat/XWeb/source -I../../mxsql/PG/MxSql/source -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/db_Users.o source/db_Users.cpp
 
 ${OBJECTDIR}/source/main.o: source/main.cpp
 	${MKDIR} -p ${OBJECTDIR}/source

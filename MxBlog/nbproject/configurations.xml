@@ -4,9 +4,21 @@
     <logicalFolder name="f1" displayName="db" projectFiles="true">
       <itemPath>source/db_Catigories.cpp</itemPath>
       <itemPath>source/db_Catigories.h</itemPath>
+      <itemPath>source/db_Comments.cpp</itemPath>
+      <itemPath>source/db_Comments.h</itemPath>
       <itemPath>source/db_Log.cpp</itemPath>
       <itemPath>source/db_Log.h</itemPath>
-      <itemPath>source/db_Query.h</itemPath>
+      <itemPath>source/db_Posts.cpp</itemPath>
+      <itemPath>source/db_Posts.h</itemPath>
+      <itemPath>source/db_Session.cpp</itemPath>
+      <itemPath>source/db_Session.h</itemPath>
+      <itemPath>source/db_Tags.cpp</itemPath>
+      <itemPath>source/db_Tags.h</itemPath>
+      <itemPath>source/db_UserAccess.cpp</itemPath>
+      <itemPath>source/db_UserAccess.h</itemPath>
+      <itemPath>source/db_Users.cpp</itemPath>
+      <itemPath>source/db_Users.h</itemPath>
+      <itemPath>source/db_XQuery.h</itemPath>
     </logicalFolder>
     <logicalFolder name="f3" displayName="Pages" projectFiles="true">
       <itemPath>source/InstallPG.cpp</itemPath>
@@ -115,11 +127,35 @@
       </item>
       <item path="source/db_Catigories.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/db_Comments.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/db_Comments.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/db_Log.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/db_Log.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="source/db_Query.h" ex="false" tool="3" flavor2="0">
+      <item path="source/db_Posts.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/db_Posts.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/db_Session.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/db_Session.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/db_Tags.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/db_Tags.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/db_UserAccess.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/db_UserAccess.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/db_Users.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/db_Users.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/db_XQuery.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/defines.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -228,11 +264,35 @@
       </item>
       <item path="source/db_Catigories.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/db_Comments.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/db_Comments.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/db_Log.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/db_Log.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="source/db_Query.h" ex="false" tool="3" flavor2="0">
+      <item path="source/db_Posts.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/db_Posts.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/db_Session.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/db_Session.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/db_Tags.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/db_Tags.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/db_UserAccess.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/db_UserAccess.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/db_Users.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/db_Users.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/db_XQuery.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/defines.h" ex="false" tool="3" flavor2="0">
       </item>

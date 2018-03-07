@@ -15,6 +15,7 @@ ByteArray * InstallPG::build(XWHeader * head)
     string ulogin = head->data_post["ulogin"];
     string psw = head->data_post["psw"];
 
+    //drop owned by adminuser
 
     //Test post value
     if(ulogin.empty() || psw.empty() || finde_bad_symbol(ulogin) || finde_bad_symbol(psw))
@@ -26,7 +27,7 @@ ByteArray * InstallPG::build(XWHeader * head)
     PGconn * conn = q->OpenConnect(CONNECTION_STRING);
     if(conn)
     {
-        content_string += "<li>Test connection OK</li>";
+        content_string += "<li><b>Test connection OK</b></li>";
     }
     else
     {
@@ -34,14 +35,22 @@ ByteArray * InstallPG::build(XWHeader * head)
         content_string += "<p>Error connecting to database!</p><hr><p><a href='install.html' class='btn'>Go back</a></p>";
         return new ByteArray(content_string);
     }
-    
+
     bool ErrorCheck = false;
 
     vector<Observer*> all_table;
     all_table.push_back(static_cast<Observer*> (new db_Log(conn)));
     all_table.push_back(static_cast<Observer*> (new db_Catigories(conn)));
-    
-    
+    all_table.push_back(static_cast<Observer*> (new db_Comments(conn)));
+    all_table.push_back(static_cast<Observer*> (new db_Posts(conn)));
+    all_table.push_back(static_cast<Observer*> (new db_Users(conn)));
+    all_table.push_back(static_cast<Observer*> (new db_Session(conn)));
+
+
+    db_UserAccess * usr_lvl = new db_UserAccess(conn);
+
+    all_table.push_back(usr_lvl);
+
 
     //Create tables
     for(Observer * obs : all_table)
@@ -51,16 +60,38 @@ ByteArray * InstallPG::build(XWHeader * head)
             content_string += "' OK</li>";
         else
         {
-             content_string += "' ERROR</li>";
-             content_string += "<p>Error create tables</p><hr><p>";
-             content_string += obs->last_error;
-             content_string += "</p><hr><p><a href='install.html' class='btn'>Go back</a></p>";
-             break;
+            content_string += "' ERROR</li>";
+            content_string += "<p>Error create tables</p><hr><p>";
+            content_string += obs->last_error;
+            content_string += "</p><hr><p><a href='install.html' class='btn'>Go back</a></p>";
+            continue;
         }
-           
+
     }
 
+    VElement * el = new VElement();
+    el->add(usr_lvl->description->get("123 DESCRIPTION"));
+    el->add(usr_lvl->value->get("123 VALUE"));
 
+
+    usr_lvl->Insert(el->Element());
+
+    el = new VElement();
+
+    el->add(usr_lvl->value->get("456 VALUE"));
+    el->add(usr_lvl->description->get("456 DESCRIPTION"));
+    usr_lvl->Insert(el->Element());
+    
+    
+
+    delete el;
+
+    for(Observer * obs : all_table)
+        delete obs;
+
+    q->CloseConnect();
+
+    delete q;
 
     return new ByteArray(content_string);
 }
