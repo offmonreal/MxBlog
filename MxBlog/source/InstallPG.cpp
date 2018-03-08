@@ -36,21 +36,30 @@ ByteArray * InstallPG::build(XWHeader * head)
         return new ByteArray(content_string);
     }
 
-    bool ErrorCheck = false;
+    //CLEAR ALL DATA USER DB mxblog
+    q->Query("drop owned by mxblog");
+
+
+    db_Catigories * categories = new db_Catigories(conn);
+    db_Users * usr = new db_Users(conn);
+    db_UserAccess * usr_lvl = new db_UserAccess(conn);
+    db_Setting * sett = new db_Setting(conn);
+    db_PostStatus * post_st = new db_PostStatus(conn);
 
     vector<Observer*> all_table;
-    all_table.push_back(static_cast<Observer*> (new db_Log(conn)));
-    all_table.push_back(static_cast<Observer*> (new db_Catigories(conn)));
-    all_table.push_back(static_cast<Observer*> (new db_Comments(conn)));
-    all_table.push_back(static_cast<Observer*> (new db_Posts(conn)));
-    all_table.push_back(static_cast<Observer*> (new db_Users(conn)));
-    all_table.push_back(static_cast<Observer*> (new db_Session(conn)));
 
-
-    db_UserAccess * usr_lvl = new db_UserAccess(conn);
-
+    all_table.push_back(categories);
+    all_table.push_back(usr);
     all_table.push_back(usr_lvl);
+    all_table.push_back(sett);
+    all_table.push_back(post_st);
+    all_table.push_back(new db_Log(conn));
+    all_table.push_back(new db_Comments(conn));
+    all_table.push_back(new db_Posts(conn));
+    all_table.push_back(new db_Session(conn));
 
+
+    bool status = true;
 
     //Create tables
     for(Observer * obs : all_table)
@@ -61,39 +70,242 @@ ByteArray * InstallPG::build(XWHeader * head)
         else
         {
             content_string += "' ERROR</li>";
-            content_string += "<p>Error create tables</p><hr><p>";
-            content_string += obs->last_error;
-            content_string += "</p><hr><p><a href='install.html' class='btn'>Go back</a></p>";
-            continue;
+            content_string += "<p>Error create tables</p><hr><p>" + obs->z_last_error + "</p>";
+            status = false;
         }
-
     }
 
-    VElement * el = new VElement();
-    el->add(usr_lvl->description->get("123 DESCRIPTION"));
-    el->add(usr_lvl->value->get("123 VALUE"));
+    //Error create tables
+    if(status == false)
+    {
+exit_now:
+        content_string += "<hr><p><a href='install.html' class='btn'>Go back</a></p>";
+
+        for(Observer * obs : all_table)
+            delete obs;
+
+        q->CloseConnect();
+
+        delete q;
+        return new ByteArray(content_string);
+    }
+
+    ///////////////////////////// INIT DATA DEFOLT VALUE /////////////////////////////
+
+    vector<IElement*> * values = new vector<IElement*> ();
+
+    ///////////////////////////// db_UserAccess /////////////////////////////
+    content_string += "<li>Initializing the Data Table '" + usr_lvl->getName();
+
+    initUserAccess(usr_lvl, values);
+
+    status = usr_lvl->Insert(values);
+
+exit_init:
+
+    for(IElement* el : *values)
+        delete el;
+
+    values->clear();
+
+    //
+    if(status == false)
+    {
+        content_string += "' ERROR</li>";
+        content_string += "<p>Error initializing tables</p><hr><p>" + usr_lvl->z_last_error + "</p>";
+        goto exit_now;
+    }
+    else
+    {
+        content_string += "' OK</li>";
+        for(IElement* el : *values)
+            delete el;
+        values->clear();
+    }
+    /////////////////////////////    E  N  D   /////////////////////////////
+
+    ///////////////////////////// db_Setting /////////////////////////////
+
+    content_string += "<li>Initializing the Data Table '" + sett->getName();
+
+    initSetting(sett, values);
+
+    status = sett->Insert(values);
+
+    if(status == false)
+    {
+        goto exit_init;
+    }
+    else
+    {
+        content_string += "' OK</li>";
+
+        for(IElement* el : *values)
+            delete el;
+        values->clear();
+    }
+
+    /////////////////////////////    E  N  D   /////////////////////////////
+
+    ///////////////////////////// db_PostStatus /////////////////////////////
+
+    content_string += "<li>Initializing the Data Table '" + post_st->getName();
+
+    initPostStatus(post_st, values);
+
+    status = post_st->Insert(values);
+
+    if(status == false)
+    {
+        goto exit_init;
+    }
+    else
+    {
+        content_string += "' OK</li>";
+        for(IElement* el : *values)
+            delete el;
+        values->clear();
+    }
+
+    /////////////////////////////    E  N  D   /////////////////////////////
+
+    ///////////////////////////// ADD ADMIN !  /////////////////////////////
+
+    VElement * val_el = new VElement();
+    val_el->add(usr->nick_name->get(ulogin));
+    val_el->add(usr->password->get(psw));
+    val_el->add(usr->email->get(""));
+    val_el->add(usr->access->get("1"));
+    val_el->add(usr->locked->get("false"));
+    val_el->add(usr->date_create->get(MxSQL::DateTime::now_timestamp_utc()));
+    val_el->add(usr->subscribe->get("true"));
 
 
-    usr_lvl->Insert(el->Element());
 
-    el = new VElement();
+    if(!usr->Insert(val_el))
+    {
+        delete val_el;
+        content_string += "<p>Error initializing tables</p><hr>";
+        goto exit_now;
+    }
+    else
+    {
+        delete val_el;
+    }
+    /////////////////////////////    E  N  D   /////////////////////////////
 
-    el->add(usr_lvl->value->get("456 VALUE"));
-    el->add(usr_lvl->description->get("456 DESCRIPTION"));
-    usr_lvl->Insert(el->Element());
-    
-    
+    ///////////////////////////// ADD CATIGORIES !  /////////////////////////////
+    val_el = new VElement();
+    val_el->add(categories->name_category->get("General"));
+    val_el->add(categories->children_category->get("0"));
+    val_el->add(categories->seo_url->get(""));
 
-    delete el;
+    if(!categories->Insert(val_el))
+    {
+        delete val_el;
+        content_string += "<p>Error initializing tables categories</p><hr>";
+        goto exit_now;
+    }
+    else
+    {
+        delete val_el;
+    }
+    /////////////////////////////    E  N  D   /////////////////////////////
 
-    for(Observer * obs : all_table)
-        delete obs;
 
-    q->CloseConnect();
+    ///////////////////////////// ADD POST !  /////////////////////////////
+    val_el = new VElement();
 
-    delete q;
+    /////////////////////////////    E  N  D   /////////////////////////////
+
+
+
+
+    content_string += "<hr><h3>Success!</h3><p>Admin panel:</br><code>http://your_site/mx-admin/</code></br>Start now!</p><p><a href='index.html' class='btn'>View website</a> <a href='mx-admin/' class='btn'>Admin panel</a></p>";
 
     return new ByteArray(content_string);
+
+}
+
+void InstallPG::initPostStatus(db_PostStatus * tbl, vector<IElement*> * values)
+{
+    VElement * el = new VElement();
+    el->add(tbl->parameter->get("enable"));
+    el->add(tbl->description->get("Enable on site"));
+    values->push_back(el->Element());
+    //
+    el = new VElement();
+    el->add(tbl->parameter->get("disable"));
+    el->add(tbl->description->get("Disable on site"));
+    values->push_back(el->Element());
+    //
+    el = new VElement();
+    el->add(tbl->parameter->get("edit"));
+    el->add(tbl->description->get("Draft"));
+    values->push_back(el->Element());
+}
+
+void InstallPG::initSetting(db_Setting * tbl, vector<IElement*> * values)
+{
+    VElement * el = new VElement();
+    el->add(tbl->parameter->get("blog_name"));
+    el->add(tbl->value->get("MxBlog"));
+    el->add(tbl->description->get("Name your blog"));
+    values->push_back(el->Element());
+    //
+    el = new VElement();
+    el->add(tbl->parameter->get("is_enable"));
+    el->add(tbl->value->get("true"));
+    el->add(tbl->description->get("Variant acess: true,false,password,filter"));
+    values->push_back(el->Element());
+    //
+    el = new VElement();
+    el->add(tbl->parameter->get("reg_new_user"));
+    el->add(tbl->value->get("false"));
+    el->add(tbl->description->get("Enable registration user. Varian value: true,false"));
+    values->push_back(el->Element());
+    //
+    el = new VElement();
+    el->add(tbl->parameter->get("enable_comment"));
+    el->add(tbl->value->get("false"));
+    el->add(tbl->description->get("Enable comment to post. Varian: true,false,only_member,only_capcha"));
+    values->push_back(el->Element());
+    //
+    el = new VElement();
+    el->add(tbl->parameter->get("post_on_page"));
+    el->add(tbl->value->get("15"));
+    el->add(tbl->description->get("Coun post on start page. Varian: 1-100"));
+    values->push_back(el->Element());
+
+}
+
+void InstallPG::initUserAccess(db_UserAccess * tbl, vector<IElement*> * values)
+{
+    VElement * el = new VElement();
+    el->add(tbl->parameter->get("admin"));
+    el->add(tbl->description->get("Full access"));
+    values->push_back(el->Element());
+    //
+    el = new VElement();
+    el->add(tbl->parameter->get("poster"));
+    el->add(tbl->description->get("Post access"));
+    values->push_back(el->Element());
+    //
+    el = new VElement();
+    el->add(tbl->parameter->get("reader"));
+    el->add(tbl->description->get("Only read"));
+    values->push_back(el->Element());
+    //
+    el = new VElement();
+    el->add(tbl->parameter->get("friend"));
+    el->add(tbl->description->get("Read and write comment VIP access"));
+    values->push_back(el->Element());
+    //
+    el = new VElement();
+    el->add(tbl->parameter->get("user"));
+    el->add(tbl->description->get("Read and write comment if enable setting blog"));
+    values->push_back(el->Element());
+
 }
 
 InstallPG::~InstallPG()

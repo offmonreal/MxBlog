@@ -8,7 +8,8 @@
 #include "db_Session.h"
 #include "db_UserAccess.h"
 #include "db_Users.h"
-
+#include "db_Setting.h"
+#include "db_PostStatus.h"
 
 
 #include "MxSql.h"

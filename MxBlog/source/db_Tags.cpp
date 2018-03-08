@@ -2,7 +2,7 @@
 
 db_Tags::db_Tags(PGconn * pConnect)
 {
-     Table::setName("tags");
+    Table::setName("tags");
     FProperties * fk = new FProperties("key_tags", TF::SERIAL4);
     fk->PrimaryKey = true;
     Table::addProperties(fk);
@@ -11,7 +11,6 @@ db_Tags::db_Tags(PGconn * pConnect)
 
     IConnect::setConnection(pConnect);
 }
-
 
 db_Tags::~db_Tags()
 {

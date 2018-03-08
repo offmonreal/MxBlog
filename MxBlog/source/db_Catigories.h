@@ -9,6 +9,8 @@ using namespace MxSQL;
 class db_Catigories : public Table
 {
 public:
+    FProperties * fk, * name_category, * children_category, * seo_url;
+public:
     db_Catigories(PGconn * pConnect = nullptr);
     virtual ~db_Catigories();
 private:

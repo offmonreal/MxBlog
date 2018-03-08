@@ -7,7 +7,7 @@ db_Log::db_Log(PGconn * pConnect)
     fk->PrimaryKey = true;
     Table::addProperties(fk);
     Table::addProperties(new FProperties("value_log", TF::VarChar, 1024));
-    Table::addProperties(new FProperties("date_log", TF::TimeStamp));
+    Table::addProperties(new FProperties("date_log", TF::TimeStampTz));
 
     IConnect::setConnection(pConnect);
 }

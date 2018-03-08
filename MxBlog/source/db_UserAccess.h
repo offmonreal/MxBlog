@@ -9,7 +9,7 @@ using namespace MxSQL;
 class db_UserAccess : public Table
 {
 public:
-    FProperties * fk, * value, * description;
+    FProperties * fk, * parameter, * description;
 public:
     db_UserAccess(PGconn * pConnect = nullptr);
     virtual ~db_UserAccess();

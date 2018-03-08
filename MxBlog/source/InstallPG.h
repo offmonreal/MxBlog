@@ -19,6 +19,10 @@ public:
     InstallPG();
 public:
     virtual ByteArray * build(XWHeader * head) override final;
+private:
+    static void initUserAccess(db_UserAccess * tbl, vector<IElement*> * values);
+    static void initSetting(db_Setting * tbl, vector<IElement*> * values);
+    static void initPostStatus(db_PostStatus * tbl, vector<IElement*> * values);
 public:
     virtual ~InstallPG();
 private:

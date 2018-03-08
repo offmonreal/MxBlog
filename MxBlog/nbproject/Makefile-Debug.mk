@@ -40,8 +40,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/source/db_Catigories.o \
 	${OBJECTDIR}/source/db_Comments.o \
 	${OBJECTDIR}/source/db_Log.o \
+	${OBJECTDIR}/source/db_PostStatus.o \
 	${OBJECTDIR}/source/db_Posts.o \
 	${OBJECTDIR}/source/db_Session.o \
+	${OBJECTDIR}/source/db_Setting.o \
 	${OBJECTDIR}/source/db_Tags.o \
 	${OBJECTDIR}/source/db_UserAccess.o \
 	${OBJECTDIR}/source/db_Users.o \
@@ -101,6 +103,11 @@ ${OBJECTDIR}/source/db_Log.o: source/db_Log.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/postgresql -I../../mxchat/XWeb/source -I../../mxsql/PG/MxSql/source -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/db_Log.o source/db_Log.cpp
 
+${OBJECTDIR}/source/db_PostStatus.o: source/db_PostStatus.cpp
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/postgresql -I../../mxchat/XWeb/source -I../../mxsql/PG/MxSql/source -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/db_PostStatus.o source/db_PostStatus.cpp
+
 ${OBJECTDIR}/source/db_Posts.o: source/db_Posts.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
@@ -110,6 +117,11 @@ ${OBJECTDIR}/source/db_Session.o: source/db_Session.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -I/usr/include/postgresql -I../../mxchat/XWeb/source -I../../mxsql/PG/MxSql/source -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/db_Session.o source/db_Session.cpp
+
+${OBJECTDIR}/source/db_Setting.o: source/db_Setting.cpp
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/postgresql -I../../mxchat/XWeb/source -I../../mxsql/PG/MxSql/source -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/db_Setting.o source/db_Setting.cpp
 
 ${OBJECTDIR}/source/db_Tags.o: source/db_Tags.cpp
 	${MKDIR} -p ${OBJECTDIR}/source

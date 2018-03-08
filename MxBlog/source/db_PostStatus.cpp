@@ -1,13 +1,13 @@
-#include "db_UserAccess.h"
+#include "db_PostStatus.h"
 
-db_UserAccess::db_UserAccess(PGconn * pConnect)
+db_PostStatus::db_PostStatus(PGconn * pConnect)
 {
-    Table::setName("user_access");
+    Table::setName("post_status");
 
     //First key
-    fk = new FProperties("key_usr_access", TF::SERIAL4);
+    fk = new FProperties("key_post_status", TF::SERIAL4);
     fk->PrimaryKey = true;
-    
+
     parameter = new FProperties("parameter", TF::VarChar, 15, true, MxSQL::UI::LOWER);
     description = new FProperties("description", TF::VarChar, 255);
 
@@ -16,10 +16,9 @@ db_UserAccess::db_UserAccess(PGconn * pConnect)
     Table::addProperties(description);
 
     IConnect::setConnection(pConnect);
-    
 }
 
-db_UserAccess::~db_UserAccess()
+db_PostStatus::~db_PostStatus()
 {
 }
 

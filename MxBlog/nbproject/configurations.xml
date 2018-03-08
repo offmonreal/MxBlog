@@ -8,10 +8,14 @@
       <itemPath>source/db_Comments.h</itemPath>
       <itemPath>source/db_Log.cpp</itemPath>
       <itemPath>source/db_Log.h</itemPath>
+      <itemPath>source/db_PostStatus.cpp</itemPath>
+      <itemPath>source/db_PostStatus.h</itemPath>
       <itemPath>source/db_Posts.cpp</itemPath>
       <itemPath>source/db_Posts.h</itemPath>
       <itemPath>source/db_Session.cpp</itemPath>
       <itemPath>source/db_Session.h</itemPath>
+      <itemPath>source/db_Setting.cpp</itemPath>
+      <itemPath>source/db_Setting.h</itemPath>
       <itemPath>source/db_Tags.cpp</itemPath>
       <itemPath>source/db_Tags.h</itemPath>
       <itemPath>source/db_UserAccess.cpp</itemPath>
@@ -135,6 +139,10 @@
       </item>
       <item path="source/db_Log.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/db_PostStatus.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/db_PostStatus.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/db_Posts.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/db_Posts.h" ex="false" tool="3" flavor2="0">
@@ -142,6 +150,10 @@
       <item path="source/db_Session.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/db_Session.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/db_Setting.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/db_Setting.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/db_Tags.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -272,6 +284,10 @@
       </item>
       <item path="source/db_Log.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="source/db_PostStatus.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/db_PostStatus.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="source/db_Posts.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/db_Posts.h" ex="false" tool="3" flavor2="0">
@@ -279,6 +295,10 @@
       <item path="source/db_Session.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/db_Session.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/db_Setting.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/db_Setting.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/db_Tags.cpp" ex="false" tool="1" flavor2="0">
       </item>

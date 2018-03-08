@@ -11,8 +11,8 @@ db_Posts::db_Posts(PGconn * pConnect)
     Table::addProperties(new FProperties("body_addon", TF::VarChar, 10000));
     Table::addProperties(new FProperties("user_id", TF::Int4, 0, true, UI::FALSE));
     Table::addProperties(new FProperties("status_id", TF::Int4, 0, true, UI::FALSE));
-    Table::addProperties(new FProperties("start_date", TF::Date, 0, true));
-    Table::addProperties(new FProperties("create_date", TF::TimeStamp, 0, true));
+    Table::addProperties(new FProperties("start_date", TF::TimeStampTz, 0, true));
+    Table::addProperties(new FProperties("create_date", TF::TimeStampTz, 0, true));
     Table::addProperties(new FProperties("access_level", TF::Int4, 0, true, UI::FALSE, "5"));
     Table::addProperties(new FProperties("categories", TF::Int4));
     Table::addProperties(new FProperties("tags", TF::Int4));

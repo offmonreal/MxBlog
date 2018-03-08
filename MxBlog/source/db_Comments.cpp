@@ -8,7 +8,7 @@ db_Comments::db_Comments(PGconn * pConnect)
     Table::addProperties(fk);
     Table::addProperties(new FProperties("user_id", TF::Int4, 0, true, UI::FALSE));
     Table::addProperties(new FProperties("on_moderation", TF::Bool, 0, true, UI::FALSE,"false"));
-    Table::addProperties(new FProperties("date_comment", TF::TimeStamp));
+    Table::addProperties(new FProperties("date_comment", TF::TimeStampTz));
 
 
     IConnect::setConnection(pConnect);
