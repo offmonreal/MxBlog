@@ -8,6 +8,20 @@
 using namespace XW;
 using namespace MxSQL;
 
+
+//Информация по командам
+static void show_usage(std::string name)
+{
+    std::cerr << "MxBlog free WEB CMS on C++\n"
+              << "Options:\n"
+              << "-h,--help\t\tShow this help message\n"
+              << "-d,--daemon\tSATART MxBlog as deamon\n"
+              << "-c,--console\tSATART MxBlog in console mode\n"
+              << "-r,--reinstall \tSATART MxBlog for reinstall (remove all data in database)\n"
+              << std::endl;
+}
+
+
 //Если база существует и работает
 bool test_data_base()
 {
@@ -18,9 +32,9 @@ int main(int argc, char** argv)
 {
 
     //Web server
-    //XWeb * xw = new XWeb(80);
+    XWeb * xw = new XWeb(80);
     //Local test
-    XWeb * xw = new XWeb(9090);
+    //XWeb * xw = new XWeb(9090);
 
     // ============ DIRECTORIES ============
     //Root dir (www)
@@ -63,16 +77,18 @@ int main(int argc, char** argv)
 
     // ============ SETTING SITE ============
     //Name domain
-    //xw->addSite("tnx.pw", dir);
-    //xw->addSite("tnx.pw:80", dir);
-    //xw->addSite("www.tnx.pw", dir);
-    //xw->addSite("www.tnx.pw:80", dir);
+    xw->addSite("false.ga", dir);
+    xw->addSite("www.false.ga", dir);
+    xw->addSite("false.ga:80", dir);
+    xw->addSite("www.false.ga:80", dir);
+    xw->addSite("127.0.0.1:80", dir);
+
 
     //Local test VIRTUAL NAME in /etc/hosts
-    xw->addSite("tnx.pp", dir);
-    xw->addSite("tnx.pp:9090", dir);
-    xw->addSite("www.tnx.pp", dir);
-    xw->addSite("www.tnx.pp:9090", dir);
+    //xw->addSite("tnx.pp", dir);
+    //xw->addSite("tnx.pp:9090", dir);
+    //xw->addSite("www.tnx.pp", dir);
+    //xw->addSite("www.tnx.pp:9090", dir);
 
     //Start server
     xw->start();

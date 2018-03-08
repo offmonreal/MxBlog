@@ -12,7 +12,9 @@
                 <make-dep-project>../../mxsql/PG/MxSql</make-dep-project>
                 <make-dep-project>../../mxchat/XWeb</make-dep-project>
             </make-dep-projects>
-            <sourceRootList/>
+            <sourceRootList>
+                <sourceRootElem>source/db</sourceRootElem>
+            </sourceRootList>
             <confList>
                 <confElem>
                     <name>Debug</name>

@@ -40,22 +40,30 @@ ByteArray * InstallPG::build(XWHeader * head)
     q->Query("drop owned by mxblog");
 
 
-    db_Catigories * categories = new db_Catigories(conn);
+    db_Categories * categories = new db_Categories(conn);
+    db_CategoriesRelation * categories_relation = new db_CategoriesRelation(conn);
     db_Users * usr = new db_Users(conn);
     db_UserAccess * usr_lvl = new db_UserAccess(conn);
     db_Setting * sett = new db_Setting(conn);
     db_PostStatus * post_st = new db_PostStatus(conn);
-
+    db_Tags * tags = new db_Tags(conn);
+    db_TagsRelation * tags_relation = new db_TagsRelation(conn);
+    db_Posts * posts = new db_Posts(conn);
+    
+    
     vector<Observer*> all_table;
 
+    all_table.push_back(tags);
+    all_table.push_back(tags_relation);
     all_table.push_back(categories);
+    all_table.push_back(categories_relation);
     all_table.push_back(usr);
     all_table.push_back(usr_lvl);
     all_table.push_back(sett);
     all_table.push_back(post_st);
+    all_table.push_back(posts);
     all_table.push_back(new db_Log(conn));
     all_table.push_back(new db_Comments(conn));
-    all_table.push_back(new db_Posts(conn));
     all_table.push_back(new db_Session(conn));
 
 

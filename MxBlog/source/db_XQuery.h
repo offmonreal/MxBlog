@@ -1,15 +1,21 @@
 #ifndef DB_QUERY_H
 #define DB_QUERY_H
 
-#include "db_Log.h"
-#include "db_Catigories.h"
-#include "db_Comments.h"
-#include "db_Posts.h"
-#include "db_Session.h"
-#include "db_UserAccess.h"
-#include "db_Users.h"
-#include "db_Setting.h"
-#include "db_PostStatus.h"
+#include "db/db_Log.h"
+#include "db/db_Comments.h"
+#include "db/db_Posts.h"
+#include "db/db_Session.h"
+#include "db/db_UserAccess.h"
+#include "db/db_Users.h"
+#include "db/db_Setting.h"
+#include "db/db_PostStatus.h"
+#include "db/db_Tags.h"
+#include "db/db_TagsRelation.h"
+#include "db/db_Categories.h"
+#include "db/db_CategoriesRelation.h"
+
+
+
 
 
 #include "MxSql.h"

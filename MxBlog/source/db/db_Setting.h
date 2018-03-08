@@ -1,6 +1,7 @@
 #ifndef DB_SETTING_H
 #define DB_SETTING_H
-#include "includes.h"
+
+#include "../includes.h"
 #include "MxSql.h"
 
 using namespace MxSQL;

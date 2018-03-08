@@ -1,11 +1,11 @@
-#include "db_Catigories.h"
+#include "db_Categories.h"
 
-db_Catigories::db_Catigories(PGconn * pConnect)
+db_Categories::db_Categories(PGconn * pConnect)
 {
-    Table::setName("catigories");
+    Table::setName("categories");
 
     //First key
-    fk = new FProperties("key_catigories", TF::SERIAL4);
+    fk = new FProperties("key_categories", TF::SERIAL4);
     fk->PrimaryKey = true;
     Table::addProperties(fk);
     //
@@ -21,7 +21,7 @@ db_Catigories::db_Catigories(PGconn * pConnect)
     IConnect::setConnection(pConnect);
 }
 
-db_Catigories::~db_Catigories()
+db_Categories::~db_Categories()
 {
 }
 
