@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/source/Blog.o \
 	${OBJECTDIR}/source/InstallPG.o \
 	${OBJECTDIR}/source/StartPG.o \
 	${OBJECTDIR}/source/db/db_Categories.o \
@@ -79,6 +80,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/mxblog: ../../mxsql/PG/MxSql/dist/DLi
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/mxblog: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/mxblog ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/source/Blog.o: source/Blog.cpp
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/include/postgresql -I../../mxchat/XWeb/source -I../../mxsql/PG/MxSql/source -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/Blog.o source/Blog.cpp
 
 ${OBJECTDIR}/source/InstallPG.o: source/InstallPG.cpp
 	${MKDIR} -p ${OBJECTDIR}/source

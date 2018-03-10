@@ -1,7 +1,16 @@
-#Создать дамп
+$ sudo -u postgres psql
+postgres=# create user MxBlog;
+postgres=# alter user MxBlog password 'MxBlog';
+postgres-# create database db_mx_blog owner MxBlog;
+postgres-# grant all privileges on database db_mx_blog to MxBlog;
+postgres-# \q
+
+
+
+
+#Create dump
 su postgres
 pg_dump -h localhost -p 5432 -U mxblog -C -F p -b -v -f /home/maxim/prj/MxBlog/sql/mydb.backup db_mx_blog
-
 
 
 #Восстановление из под postgres пользователя
@@ -9,6 +18,8 @@ su postgres
 psql
 postgres=# alter user postgres password 'apassword';
 postgres=# \q
+
+
 #Восстановление и остановкой при ошибке
 psql -h localhost -U postgres --set ON_ERROR_STOP=on -f /home/maxim/mydb.backup
 #Восстановление и игноор ошибок

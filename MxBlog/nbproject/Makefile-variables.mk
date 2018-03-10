@@ -14,14 +14,14 @@ CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/mxblog
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
 CND_PACKAGE_NAME_Debug=mxblog.tar
 CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/mxblog.tar
-# Release configuration
-CND_PLATFORM_Release=GNU-Linux
-CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=mxblog
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/mxblog
-CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=mxblog.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/mxblog.tar
+# ReleaseX64 configuration
+CND_PLATFORM_ReleaseX64=GNU-Linux
+CND_ARTIFACT_DIR_ReleaseX64=dist/ReleaseX64/GNU-Linux
+CND_ARTIFACT_NAME_ReleaseX64=mxblog
+CND_ARTIFACT_PATH_ReleaseX64=dist/ReleaseX64/GNU-Linux/mxblog
+CND_PACKAGE_DIR_ReleaseX64=dist/ReleaseX64/GNU-Linux/package
+CND_PACKAGE_NAME_ReleaseX64=mxblog.tar
+CND_PACKAGE_PATH_ReleaseX64=dist/ReleaseX64/GNU-Linux/package/mxblog.tar
 #
 # include compiler specific variables
 #

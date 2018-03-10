@@ -1,0 +1,10 @@
+Package: MxBlog
+Version: 1.0
+Provides: MxBlog
+Maintainer: Maxim Bezverkhnyy <offmonreal@live.com>
+Architecture: amd64
+Section: net
+Depends: libpq5, postgresql
+Priority: optional
+Description: MxBlog - Light web CMS on C++
+Origin: www.offmonreal.com
