@@ -24,7 +24,7 @@ private:
     static void initSetting(db_Setting * tbl, vector<IElement*> * values);
     static void initPostStatus(db_PostStatus * tbl, vector<IElement*> * values);
 public:
-    virtual ~InstallPG();
+    ~InstallPG();
 private:
 
 };

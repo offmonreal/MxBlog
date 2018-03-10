@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>MxBlog - admin area</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="Description" lang="en" content="Admin area">
+		<!-- Bootstrap Core CSS file -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		<!-- Override CSS file - add your own CSS rules -->
+		<link rel="stylesheet" href="assets/css/styles.css">
+		<!-- Conditional comment containing JS files for IE6 - 8 -->
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+
+	    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+			<div class="container-fluid">
+
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#"></a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li><a href="#">Nav item 1</a></li>
+						<li><a href="#">Nav item 2</a></li>
+						<li><a href="#">Nav item 3</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+
+   <div class="container col-xs-12 col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
+            <br />
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1>Welcome</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i style="width: auto"></i>
+                            </span>
+                            <input id="txtUsuario" runat="server" type="text" class="form-control" name="user" placeholder="Login" required="" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i style="width: auto"></i>
+                            </span>
+                            <input id="txtSenha" runat="server" type="password" class="form-control" name="password" placeholder="Password" required="" />
+                        </div>
+                    </div>
+                    <button id="btnLogin" runat="server" class="btn btn-default" style="width: 100%">
+                        Sign in</i>
+                    </button>
+                </div>
+        </div>
+  </body>
+  <!-- END BODY -->
+  <div class='footer'>
+				&copy; MxBlog 2018
+			</div>
+</html>
+

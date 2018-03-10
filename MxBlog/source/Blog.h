@@ -4,6 +4,7 @@
 #include "includes.h"
 #include "defines.h"
 
+#include "MxAdminPG.h"
 #include "StartPG.h"
 #include "InstallPG.h"
 #include "XW.h"

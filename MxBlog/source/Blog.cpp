@@ -26,12 +26,16 @@ void Blog::init()
     XWDir * css = new XWDir();
     //www/asserts/js/
     XWDir * js = new XWDir();
+    //www/mx-admin/
+    XWDir * dir_admin = new XWDir();
 
     // =========== VIRTUAL PATHS ===========
     //Add sub directories
     assets->addDir("css", css);
     assets->addDir("js", js);
     dir->addDir("assets", assets);
+    dir->addDir("mx-admin", dir_admin);
+    dir_admin->addDir("assets", assets);
 
 
     // =========== STATIC CONTENT ===========
@@ -55,6 +59,12 @@ void Blog::init()
     if(!findeBase())
         dir->addPage("install.html", new InstallPG());
 
+    MxAdminPG * admin = new MxAdminPG();
+    dir_admin->addPage("", admin);
+    dir_admin->addPage("index.html", admin);
+
+
+
 
     // ============ SETTING SITE ============
     //Name domain
@@ -63,7 +73,7 @@ void Blog::init()
     xw->addSite("false.ga:80", dir);
     xw->addSite("www.false.ga", dir);
     xw->addSite("www.false.ga:80", dir);
-    */
+     */
 
 
     //Local test VIRTUAL NAME in /etc/hosts

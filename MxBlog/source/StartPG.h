@@ -16,7 +16,7 @@ public:
 public:
      virtual ByteArray * build(XWHeader * head) override final;
 public:
-    virtual ~StartPG();
+    ~StartPG();
 private:
 
 };

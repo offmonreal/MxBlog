@@ -31,6 +31,8 @@
     <logicalFolder name="f3" displayName="Pages" projectFiles="true">
       <itemPath>source/InstallPG.cpp</itemPath>
       <itemPath>source/InstallPG.h</itemPath>
+      <itemPath>source/MxAdminPG.cpp</itemPath>
+      <itemPath>source/MxAdminPG.h</itemPath>
       <itemPath>source/StartPG.cpp</itemPath>
       <itemPath>source/StartPG.h</itemPath>
     </logicalFolder>
@@ -135,6 +137,10 @@
       <item path="source/InstallPG.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/InstallPG.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/MxAdminPG.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/MxAdminPG.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/StartPG.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -295,6 +301,10 @@
       <item path="source/InstallPG.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/InstallPG.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/MxAdminPG.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="source/MxAdminPG.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/StartPG.cpp" ex="false" tool="1" flavor2="0">
       </item>

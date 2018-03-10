@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/source/Blog.o \
 	${OBJECTDIR}/source/InstallPG.o \
+	${OBJECTDIR}/source/MxAdminPG.o \
 	${OBJECTDIR}/source/StartPG.o \
 	${OBJECTDIR}/source/db/db_Categories.o \
 	${OBJECTDIR}/source/db/db_CategoriesRelation.o \
@@ -90,6 +91,11 @@ ${OBJECTDIR}/source/InstallPG.o: source/InstallPG.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -I/usr/include/postgresql -I../../mxchat/XWeb/source -I../../mxsql/PG/MxSql/source -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/InstallPG.o source/InstallPG.cpp
+
+${OBJECTDIR}/source/MxAdminPG.o: source/MxAdminPG.cpp
+	${MKDIR} -p ${OBJECTDIR}/source
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -I/usr/include/postgresql -I../../mxchat/XWeb/source -I../../mxsql/PG/MxSql/source -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/source/MxAdminPG.o source/MxAdminPG.cpp
 
 ${OBJECTDIR}/source/StartPG.o: source/StartPG.cpp
 	${MKDIR} -p ${OBJECTDIR}/source
