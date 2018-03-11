@@ -33,7 +33,7 @@
                             <span class='input-group-addon'>
                                 <i style='width: auto'></i>
                             </span>
-                            <input type='text' class='form-control' name='ulogin' placeholder='Login' required />
+                            <input type='text' class='form-control' name='ulogin' placeholder='Login' required/>
                         </div>
                     </div>
                     
@@ -42,7 +42,7 @@
                             <span class='input-group-addon'>
                                 <i style='width: auto'></i>
                             </span>
-                            <input type='password' class='form-control' name='psw' placeholder='Password' required />
+                            <input type='password' class='form-control' name='psw' placeholder='Password' required='' />
                         </div>
                     </div>
                     <button id='btnLogin' runat='server' class='btn btn-default' style='width: 100%'>Sign in</button>

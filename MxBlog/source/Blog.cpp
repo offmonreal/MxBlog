@@ -54,7 +54,9 @@ void Blog::init()
 
     // ============ DYNAMIC PAGE ============
     //Add root page (www)
-    dir->addPage("", new StartPG());
+    StartPG * index = new StartPG();
+    dir->addPage("", index);
+    dir->addPage("index.html", index);
     //Add root page (www/install.html)
     if(!findeBase())
         dir->addPage("install.html", new InstallPG());
