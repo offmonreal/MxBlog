@@ -228,7 +228,8 @@ exit_init:
 
 
 
-
+    q->CloseConnect();
+    delete q;
     content_string += "<hr><h3>Success!</h3><p>Admin panel:</br><code>http://your_site/mx-admin/</code></br>Start now!</p><p><a href='index.html' class='btn'>View website</a> <a href='mx-admin/' class='btn'>Admin panel</a></p>";
 
     return new ByteArray(content_string);

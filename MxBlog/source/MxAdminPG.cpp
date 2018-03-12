@@ -22,19 +22,42 @@ ByteArray * MxAdminPG::build(XWHeader * head)
     if(ulogin.empty() || psw.empty() || finde_bad_symbol(ulogin) || finde_bad_symbol(psw))
         return new ByteArray(body_login_en);
 
+    DB_QUERY * q = new DB_QUERY();
+    PGconn * conn = q->OpenConnect(CONNECTION_STRING);
+
+    if(!conn)
+    {
+        return nullptr;// Return no connection to the database
+    }
+
+    int user = getLevelAccess(ulogin, psw, conn);
+    if(user < 0)
+    {
+        // Either the user does not exist or the password is not correct
+        // Either the access level is small.
+        // All this is not important
+        // Return access is blocked
+        return nullptr;
+    }
+    
+    
+    string test = UUID();
+    
+    //string test2 = test;
+
+    return nullptr;
+}
+
+int MxAdminPG::getLevelAccess(string login, string password, PGconn * conn)
+{
+
     //Table users
-    db_Users * u = new db_Users();
+    db_Users * u = new db_Users(conn);
 
-    PGconn * conn = u->OpenConnect(CONNECTION_STRING);
-
-    if(conn == nullptr)
-        return nullptr; //Вернкть нет подключения к БД
-
-
-    //Условие селекта Where
+    // The Where clause condition
     WhereList * wh = new WhereList();
-    wh->add(u->nick_name->where(WhereIf::Equally, ulogin));
-    wh->add(u->password->where(WhereIf::Equally, psw));
+    wh->add(u->nick_name->where(WhereIf::Equally, login));
+    wh->add(u->password->where(WhereIf::Equally, password));
 
     vector<MxSQL::Value*> * select_items = u->SelectWhere(wh);
 
@@ -43,19 +66,33 @@ ByteArray * MxAdminPG::build(XWHeader * head)
     u->CloseConnect();
     delete u;
 
+    int rezult = 0;
 
     if(select_items != nullptr)
     {
         for(MxSQL::Value * vv : *select_items)
         {
-            cout << vv->ElementName.c_str() << '\n';
-            cout << *vv->va_string[0];
+            //If field access
+            if(u->access->Name == vv->ElementName)
+            {
+                //Admin or poster
+                if(*vv->va_string[0] == "1")
+                    rezult = 1;
+                else if(*vv->va_string[0] == "2")
+                    rezult = 2;
+                else
+                    rezult = -1;
+                delete vv;
+                break;
+            }
         }
-
-
     }
 
-    return nullptr;
+    select_items->clear();
+    delete select_items;
+
+    return rezult;
+
 }
 
 MxAdminPG::~MxAdminPG()

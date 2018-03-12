@@ -3,6 +3,7 @@
 
 #include "includes.h"
 #include "defines.h"
+#include "Random.h"
 
 //XWeb
 #include "XW.h"
@@ -20,6 +21,8 @@ public:
     MxAdminPG();
 public:
     virtual ByteArray * build(XWHeader * head) override final;
+public:
+    static int getLevelAccess(string login, string password, PGconn * conn);
 public:
     ~MxAdminPG();
 private:

@@ -36,6 +36,9 @@
       <itemPath>source/StartPG.cpp</itemPath>
       <itemPath>source/StartPG.h</itemPath>
     </logicalFolder>
+    <logicalFolder name="f4" displayName="Security" projectFiles="true" kind="ROOT">
+      <itemPath>source/Random.h</itemPath>
+    </logicalFolder>
     <logicalFolder name="f2" displayName="Worck" projectFiles="true">
     </logicalFolder>
     <logicalFolder name="SourceFiles"
@@ -141,6 +144,8 @@
       <item path="source/MxAdminPG.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/MxAdminPG.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/Random.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/StartPG.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -305,6 +310,8 @@
       <item path="source/MxAdminPG.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="source/MxAdminPG.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="source/Random.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="source/StartPG.cpp" ex="false" tool="1" flavor2="0">
       </item>
