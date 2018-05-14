@@ -8,6 +8,8 @@ using namespace MxSQL;
 
 class db_Log : public Table
 {
+    public:
+    FProperties * fk, * value_log, * date_log;
 public:
     db_Log(PGconn * pConnect = nullptr);
     virtual ~db_Log();

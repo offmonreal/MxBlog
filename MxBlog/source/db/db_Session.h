@@ -9,6 +9,8 @@ using namespace MxSQL;
 class db_Session  : public Table
 {
 public:
+     FProperties * user_id, * session_id, * date_expired, * value_cookie,* ip_address;
+public:
     db_Session(PGconn * pConnect = nullptr);
     virtual ~db_Session();
 private:

@@ -113,15 +113,11 @@ void Blog::stop()
 
 void Blog::writeLog(string value)
 {
-
     //    if(value == nullptr || strlen(value) < 1)
     return;
-
     openlog("mxblog", LOG_PID | LOG_CONS, LOG_USER);
     syslog(LOG_INFO, value.c_str()); //Запишим
     closelog(); //Закроем лог      
-
-
 }
 
 // функция обработки сигналов ошибок

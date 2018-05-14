@@ -3,11 +3,17 @@
 db_Session::db_Session(PGconn * pConnect)
 {
     Table::setName("session");
-    Table::addProperties(new FProperties("user_id", TF::Int4));
-    Table::addProperties(new FProperties("session_id", TF::VarChar, 39, true,MxSQL::UI::LOWER));
-    Table::addProperties(new FProperties("date_expired", TF::TimeStampTz, 0, true));
-    Table::addProperties(new FProperties("value_cookie", TF::VarChar, 32));
-    Table::addProperties(new FProperties("ip_address", TF::VarChar, 15));
+    user_id = new FProperties("user_id", TF::Int4);
+    session_id = new FProperties("session_id", TF::VarChar, 39, true, MxSQL::UI::LOWER);
+    date_expired = new FProperties("date_expired", TF::TimeStampTz, 0, true);
+    value_cookie = new FProperties("value_cookie", TF::VarChar, 32);
+    ip_address = new FProperties("ip_address", TF::VarChar, 15);
+
+    Table::addProperties(user_id);
+    Table::addProperties(session_id);
+    Table::addProperties(date_expired);
+    Table::addProperties(value_cookie);
+    Table::addProperties(ip_address);
 
     IConnect::setConnection(pConnect);
 }

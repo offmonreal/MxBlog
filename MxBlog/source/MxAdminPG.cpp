@@ -7,6 +7,7 @@ std::string body_login_en = R"(<body> <div class='container col-xs-12 col-sm-off
 
 MxAdminPG::MxAdminPG() : XWPage::XWPage(PG_TYPE::PGT_DYNAMIC_BODY, MIME::TEXT_HTML)
 {
+    
     XWPage::setConstructor(this);
     XWPage::setHead(new ByteArray(head_admin_page_en));
     XWPage::setFooter(new ByteArray(footer_admin_page_en));
